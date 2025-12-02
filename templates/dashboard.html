@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accident Detection Dashboard</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+        h1 { color: #333; }
+        .alert { background: white; margin: 10px 0; padding: 10px; border-left: 5px solid red; }
+    </style>
+</head>
+<body>
+    <h1>🚨 Recent Collision Alerts</h1>
+
+    {% if snapshot %}
+        <img src="/{{ snapshot }}" alt="Snapshot" width="400"><br><br>
+    {% endif %}
+
+    {% for alert in alerts %}
+        <div class="alert">
+            <strong>Time:</strong> {{ alert['timestamp'] }}<br>
+            <strong>Status:</strong> {{ alert['status'] }}
+        </div>
+    {% endfor %}
+</body>
+</html>
